@@ -25,19 +25,19 @@ const DUMMY_MEALS = [
   },
 ];
 
+import Card from "../UI/Card";
+import MealItems from "./MealItems/MealItems";
 import classes from "./AvailableMeal.module.css";
 export default function AvailableMeal() {
   return (
-    <>
-      <section className={classes.meals}>
-        <ul>
-          {DUMMY_MEALS.map((each) => (
-            <li>
-              {each.name} {each.description} {each.price}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </>
+    <section className={classes.meals}>
+      <Card>
+        {DUMMY_MEALS.map((each) => (
+          <ul>
+            <MealItems key={each.id} MenuItem={each} />
+          </ul>
+        ))}
+      </Card>
+    </section>
   );
 }
