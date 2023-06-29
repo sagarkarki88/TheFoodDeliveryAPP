@@ -6,12 +6,14 @@ import "./App.css";
 /* ******************App Components************************* */
 import Header from "./components/Layout/Header";
 import MealsSummaryBanner from "./components/Meals/MealsSummaryBanner";
+import AvailableMeal from "./components/Meals/AvailableMeal";
 
 function App() {
   return (
     <Fragment>
       <Header />
       <MealsSummaryBanner />
+      <AvailableMeal />
     </Fragment>
   );
 }
