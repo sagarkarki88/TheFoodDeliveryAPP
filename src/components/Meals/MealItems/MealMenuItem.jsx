@@ -1,4 +1,5 @@
 import classes from "./MealMenuItem.module.css";
+import MealItemForm from "./MealItemForm";
 
 export default function MealMenuItem(props) {
   const price = `$${props.price.toFixed(2)}`;
@@ -9,7 +10,9 @@ export default function MealMenuItem(props) {
         <div className={classes.description}>{props.description}</div>
         <div className={classes.price}>{price}</div>
       </div>
-      <div></div>
+      <div>
+        <MealItemForm id={props.id} />
+      </div>
     </li>
   );
 }
