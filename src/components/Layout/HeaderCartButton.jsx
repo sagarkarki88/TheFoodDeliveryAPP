@@ -9,7 +9,7 @@ export default function Button(props) {
   const numberOfCartItem = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
   }, 0);
-  console.log(numberOfCartItem);
+
   return (
     <>
       <button className={classes.button} onClick={props.onclick}>

@@ -34,7 +34,7 @@ export default function AvailableMeal() {
       <Card>
         {DUMMY_MEALS.map((each) => (
           <ul>
-            <MealItems key={each.id} MenuItem={each} />
+            <MealItems id={each.id} key={each.id} MenuItem={each} />
           </ul>
         ))}
       </Card>
