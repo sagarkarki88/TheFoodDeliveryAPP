@@ -8,14 +8,31 @@ const defaultCartState = {
 
 const cartSateReducerFn = (state, action) => {
   if (action.type === "ADD") {
-    const updatedItem = state.items.concat(action.item);
-    const updateAmount =
-      state.totalAmount + action.item.price * action.item.amount;
+    const existingItemIndex = state.items.findIndex((each) => {
+      return each.id === action.item.id;
+    });
 
-    return { items: updatedItem, totalAmount: updateAmount };
+    if (existingItemIndex !== -1) {
+      const updatedItems = state.items.map((item, index) => {
+        if (index === existingItemIndex) {
+          return { ...item, amount: item.amount + action.item.amount };
+        } else return item;
+      });
+      const updateAmount =
+        state.totalAmount + action.item.price * action.item.amount;
+      return { items: updatedItems, totalAmount: updateAmount };
+    } else {
+      const updatedItems = state.items.concat(action.item);
+      const updateAmount =
+        state.totalAmount + action.item.price * action.item.amount;
+
+      return { items: updatedItems, totalAmount: updateAmount };
+    }
   }
+
   if (action.type === "REMOVE") {
   }
+
   return defaultCartState;
 };
 
