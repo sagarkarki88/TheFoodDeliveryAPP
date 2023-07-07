@@ -31,6 +31,24 @@ const cartSateReducerFn = (state, action) => {
   }
 
   if (action.type === "REMOVE") {
+    const idItem = state.items.filter((each) => {
+      if (each.id === action.id) {
+        return each;
+      }
+    });
+    const updatedItems = state.items.filter((each) => {
+      if (each.id != action.id) {
+        return each;
+      } else return;
+    });
+    const isItemsEmpty = state.items.reduce((current, item) => {
+      return current + item.amount;
+    }, -1);
+    let updatedAmount = 0;
+    if (isItemsEmpty)
+      updatedAmount = state.totalAmount - idItem[0].price * idItem[0].amount;
+
+    return { items: updatedItems, totalAmount: updatedAmount };
   }
 
   return defaultCartState;
